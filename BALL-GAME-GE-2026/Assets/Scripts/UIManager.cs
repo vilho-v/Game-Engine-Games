@@ -30,10 +30,10 @@ public class UIManager : MonoBehaviour
     }
 
 
-    public void UpdateHealth(int health)
+    public void UpdateHealth(string input)
     {
         // Update the health UI here
-        Debug.Log("Health updated to: " + health);
-        healthText.text = "Health: " + health;
+     
+        healthText.text = input;
     }
 }
