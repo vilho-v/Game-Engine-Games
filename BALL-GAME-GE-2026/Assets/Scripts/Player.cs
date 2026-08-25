@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public Rigidbody rb;
 
     public List<KillGround> hitKillColliders = new();
+    List<Collider> hitColliders = new List<Collider>();
 
     // when velocity is less than this on all axis, ball is stopped
     [SerializeField] Vector3 cutoff = new(0.1f, 0.1f, 0.1f);
@@ -55,6 +56,7 @@ public class Player : MonoBehaviour
         // get init position
         respawnPos = transform.position;
         platformMask = LayerMask.GetMask("PlatformInactive");
+
     }
 
 
@@ -86,7 +88,7 @@ public class Player : MonoBehaviour
             // holding down mouse - draw line from player to mouse pos
             if (Input.GetMouseButton(0))
             {
-                print("m1 down");
+                //print("m1 down");
                 line.SetPosition(0, transform.position);
                 line.SetPosition(1, dir);
                 if (!line.enabled)
@@ -98,7 +100,7 @@ public class Player : MonoBehaviour
             {
                 // cooldown for velocity reset
                 timer = 0.5f;
-                print("m1 up");
+                //print("m1 up");
 
                 // force has to be relative to player so it is applied in the correct direction
                 ApplyForce(transform.InverseTransformPoint(dir));
@@ -106,13 +108,21 @@ public class Player : MonoBehaviour
                 line.enabled = false;
                 goingDown = false;
                 flying = true;
+
+                GameManager.Instance.hits++;
+                UIManager.Instance.UpdateStrokes($"{GameManager.Instance.hits}");
             }
         }
 
         // enable platform underneath player if it is inactive
         GroundDetectThing();
 
+    }
 
+
+    // do in lateupdate so its after phys stepss
+    private void LateUpdate()
+    {
         // Timer so player movement isnt halted immediately by rb velocity being too low
         if (timer > 0)
         {
@@ -124,7 +134,7 @@ public class Player : MonoBehaviour
         //---RB vel reset
         // set vel to ZERO when in motion and close to stopping
         //print(rb.linearVelocity);
-        if (goingDown && rb.linearVelocity.magnitude < cutoff.magnitude)
+        if (rb.linearVelocity.magnitude < cutoff.magnitude)
         {
             ResetMovement();
         }
@@ -156,6 +166,7 @@ public class Player : MonoBehaviour
             }
         }
         hitKillColliders.Clear();
+        hitColliders.Clear();
     }
 
     public void Damage(int damage)
@@ -199,20 +210,23 @@ public class Player : MonoBehaviour
         flying = true;
     }
 
-
-    private void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter(Collision collision)
     {
-        if (goingDown)
-            if (collision.gameObject.TryGetComponent(out Platform platform))
-            {
+        //print("collided w " + collision.gameObject.name);
+        //if (goingDown)
+        if(hitColliders.Contains(collision.contacts[0].otherCollider)) return;
 
-                damage = Mathf.Sqrt(2f*Mathf.Abs(Physics.gravity.y) * Mathf.Abs(highPoint - transform.position.y));
-                print($"hit platform {platform.name}");
-                Damage((int)damage);
-                goingDown = false;
+
+        if (collision.contacts[0].otherCollider.CompareTag("Platform") )//|| collision.contacts[0].otherCollider.CompareTag("Ground"))
+        {   
+            hitColliders.Add(collision.contacts[0].otherCollider);
+            damage = Mathf.Sqrt(2f*Mathf.Abs(Physics.gravity.y) * Mathf.Abs(highPoint - transform.position.y));
+            //print($"hit platform {platform.name}");
+            Damage((int)damage);
+            goingDown = false;
             
 
-            }   
+        }   
     }
 
     //private void OnCollisionStay(Collision collision)

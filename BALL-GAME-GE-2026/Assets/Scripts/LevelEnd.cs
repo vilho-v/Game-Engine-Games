@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelEnd : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class LevelEnd : MonoBehaviour
         if (other.gameObject.TryGetComponent(out Player player))
         {
             print("u win");
+            SceneManager.LoadScene(levelNumber);
         }
     }
 }

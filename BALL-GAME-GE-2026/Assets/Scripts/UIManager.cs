@@ -7,7 +7,7 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance { get; private set; }
 
-    public TextMeshProUGUI healthText;
+    public TextMeshProUGUI healthText, timerText, strokeText;
     public GUIStyle guiStyle = new GUIStyle();
 
     Player player;
@@ -44,5 +44,15 @@ public class UIManager : MonoBehaviour
         // Update the health UI here
      
         healthText.text = input;
+    }
+
+    public void UpdateTimer(string input)
+    {
+        timerText.text = input;
+    }
+
+    public void UpdateStrokes(string input)
+    {
+        strokeText.text = input;
     }
 }
