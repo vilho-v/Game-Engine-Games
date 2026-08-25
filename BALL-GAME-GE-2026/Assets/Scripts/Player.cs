@@ -45,6 +45,8 @@ public class Player : MonoBehaviour
     // mask used by inactive platforms
     LayerMask platformMask;
 
+    public GameObject collisionFX;
+
     void Awake()
     {
         // it might be in children
@@ -131,11 +133,8 @@ public class Player : MonoBehaviour
     // constantly casts a ray and activates a platform if the player is directly over it
     void GroundDetectThing()
     {
-        if(Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 10, platformMask))
+        if(Physics.SphereCast(transform.position+new Vector3(0,-0.5f,0), 0.5f, Vector3.down, out RaycastHit hit, 5, platformMask))
         {
-            if (!hit.collider.CompareTag("Platform"))
-                return;
-
             if(hit.collider.TryGetComponent(out Platform platform))
             { 
                 platform.TogglePlatform(true);

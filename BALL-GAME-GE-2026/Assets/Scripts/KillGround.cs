@@ -49,6 +49,7 @@ public class KillGround : MonoBehaviour
                 ToggleKillThing(false);
             }
 
+            Instantiate(player.collisionFX, collision.contacts[0].point, Quaternion.identity);
             player.ApplyForce((player.transform.position - transform.position).normalized * knockback, true);
         }
     }
@@ -73,8 +74,12 @@ public class KillGround : MonoBehaviour
             if (ps != null)
             {
                 // lil burst when collided then stop emitting
-                ps.Emit(40);
+                var main = ps.main;
+                main.startSpeedMultiplier = 2;
+                ps.Emit(Random.Range(30,75));
                 ps.Stop();
+
+                main.startSpeedMultiplier = 1;
             }
         }
     }
