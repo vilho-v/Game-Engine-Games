@@ -8,7 +8,9 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance { get; private set; }
 
     public TextMeshProUGUI healthText;
+    public GUIStyle guiStyle = new GUIStyle();
 
+    Player player;
     void Awake()
     {
 
@@ -22,13 +24,20 @@ public class UIManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
+
+        player = FindFirstObjectByType<Player>();
     }
 
+    private void OnGUI()
+    {
+        GUI.Label(new Rect(10, 10, 300, 40), $"Health: {player.health}/{player.maxHealth}");
+        GUI.Label(new Rect(10, 50, 300, 40), $"Velocity: {player.rb.linearVelocity}");
+        GUI.Label(new Rect(10, 90, 300, 40), $"Flying: {player.flying}");
+        GUI.Label(new Rect(10, 130, 300, 40), $"Damage: {player.damage}");
+        GUI.Label(new Rect(10, 170, 300, 40), $"Going down: {player.goingDown}");
+        GUI.Label(new Rect(10, 210, 300, 40), $"High point: {player.highPoint}");
+
+    }
 
     public void UpdateHealth(string input)
     {
