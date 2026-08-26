@@ -72,7 +72,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 200
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -199,15 +199,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: icyplaform-character-sprites_0
+      name: head
       rect:
         serializedVersion: 2
         x: 28
         y: 692
         width: 256
         height: 330
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.4930609, y: 0.028987445}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -221,15 +221,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: icyplaform-character-sprites_1
+      name: ax
       rect:
         serializedVersion: 2
         x: 815
         y: 661
         width: 186
         height: 348
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.38061917, y: 0.14778471}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -243,15 +243,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: icyplaform-character-sprites_2
+      name: torso
       rect:
         serializedVersion: 2
         x: 18
-        y: 174
+        y: 379
         width: 263
-        height: 511
+        height: 306
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -265,15 +265,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: icyplaform-character-sprites_3
+      name: shoulder1
       rect:
         serializedVersion: 2
         x: 372
         y: 449
         width: 131
         height: 222
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.4728799, y: 0.84807634}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -287,15 +287,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: icyplaform-character-sprites_4
+      name: shoulder2
       rect:
         serializedVersion: 2
         x: 528
         y: 449
         width: 132
         height: 222
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.45289937, y: 0.84807664}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -309,15 +309,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: icyplaform-character-sprites_5
+      name: hand1
       rect:
         serializedVersion: 2
         x: 380
         y: 201
         width: 131
         height: 238
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.4660994, y: 0.8881187}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -331,15 +331,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: icyplaform-character-sprites_6
+      name: hand2
       rect:
         serializedVersion: 2
         x: 536
         y: 203
         width: 132
         height: 238
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.45289752, y: 0.9105104}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -353,15 +353,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: icyplaform-character-sprites_7
+      name: foot
       rect:
         serializedVersion: 2
         x: 96
         y: 5
         width: 196
         height: 168
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.37587816, y: 0.8332077}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -374,11 +374,33 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: leg
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 177
+        width: 174
+        height: 197
+      alignment: 9
+      pivot: {x: 0.50304353, y: 0.96239334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53ac41bd544178f4ba65c0324790f7ec
+      internalID: -760147209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: f821382913dbcaa499b2612de3fa97d0
     internalID: 0
     vertices: []
     indices: 
@@ -388,14 +410,15 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      icyplaform-character-sprites_0: -2230271270311749051
-      icyplaform-character-sprites_1: -4697020504737738702
-      icyplaform-character-sprites_2: -5605222402593443283
-      icyplaform-character-sprites_3: -4564858718921873394
-      icyplaform-character-sprites_4: -5482451823964209051
-      icyplaform-character-sprites_5: 62495134733900430
-      icyplaform-character-sprites_6: -2444715357674099636
-      icyplaform-character-sprites_7: 3953717880410486669
+      ax: -4697020504737738702
+      foot: 3953717880410486669
+      hand1: 62495134733900430
+      hand2: -2444715357674099636
+      head: -2230271270311749051
+      leg: -760147209
+      shoulder1: -4564858718921873394
+      shoulder2: -5482451823964209051
+      torso: -5605222402593443283
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
