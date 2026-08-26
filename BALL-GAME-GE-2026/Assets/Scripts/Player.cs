@@ -195,6 +195,7 @@ public class Player : MonoBehaviour
 
         ResetMovement();
         transform.position = respawnPos;
+        ResetMovement();
         health = maxHealth;
         damage = 0;
 

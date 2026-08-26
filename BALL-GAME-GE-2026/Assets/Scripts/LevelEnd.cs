@@ -12,7 +12,8 @@ public class LevelEnd : MonoBehaviour
         if (other.gameObject.TryGetComponent(out Player player))
         {
             print("u win");
-            SceneManager.LoadScene(levelNumber);
+            GameManager.Instance.EndLevel();
+            GameManager.Instance.NextLevel();
         }
     }
 }

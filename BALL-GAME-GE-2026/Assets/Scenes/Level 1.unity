@@ -4035,17 +4035,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level End
       objectReference: {fileID: 0}
-    - target: {fileID: 6125920319602423971, guid: e757ac714c401ed4bb4ad2d6870e1c64, type: 3}
-      propertyPath: levelNumber
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8735935083919954550, guid: e757ac714c401ed4bb4ad2d6870e1c64, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -22.5
+      value: -22
       objectReference: {fileID: 0}
     - target: {fileID: 8735935083919954550, guid: e757ac714c401ed4bb4ad2d6870e1c64, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 32.5
+      value: 33.5
       objectReference: {fileID: 0}
     - target: {fileID: 8735935083919954550, guid: e757ac714c401ed4bb4ad2d6870e1c64, type: 3}
       propertyPath: m_LocalPosition.z

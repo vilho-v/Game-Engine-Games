@@ -29,6 +29,9 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+
+        player = FindFirstObjectByType<Player>();
     }
 
     // Update is called once per frame
@@ -74,6 +77,7 @@ public class GameManager : MonoBehaviour
         {
             yield return null;
         }
+        UIManager.Instance.StageThing();
 
         player = FindFirstObjectByType<Player>();
 
