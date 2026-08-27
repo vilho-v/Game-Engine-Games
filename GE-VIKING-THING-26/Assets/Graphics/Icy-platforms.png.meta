@@ -208,7 +208,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Icy-platforms_0
+      name: Block Big
       rect:
         serializedVersion: 2
         x: 30
@@ -230,7 +230,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Icy-platforms_1
+      name: Block Small
       rect:
         serializedVersion: 2
         x: 1260
@@ -274,7 +274,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Icy-platforms_4
+      name: Platform
       rect:
         serializedVersion: 2
         x: 47
@@ -296,7 +296,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Icy-platforms_5
+      name: Ice Cube
       rect:
         serializedVersion: 2
         x: 963
@@ -318,7 +318,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Icy-platforms_6
+      name: Bonfire
       rect:
         serializedVersion: 2
         x: 1549
@@ -353,17 +353,17 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Icy-platforms_0: 2534119464301506577
-      Icy-platforms_1: 7061278219342040925
+      Block Big: 2534119464301506577
+      Block Small: 7061278219342040925
+      Bonfire: 4517821167023141018
+      Ice Cube: 8565707288036764043
       Icy-platforms_10: 6890990125279452485
       Icy-platforms_2: -596329983286724703
       Icy-platforms_3: 1093844151241479326
-      Icy-platforms_4: 6326408023401119547
-      Icy-platforms_5: 8565707288036764043
-      Icy-platforms_6: 4517821167023141018
       Icy-platforms_7: 2757824267672749757
       Icy-platforms_8: -2949200703758456314
       Icy-platforms_9: 1610990110754101917
+      Platform: 6326408023401119547
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
