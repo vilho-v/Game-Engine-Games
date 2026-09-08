@@ -24,7 +24,8 @@ public class ParticleButton : MonoBehaviour
 
 
         Instantiate(particlePrefab, UIManager.instance.player.transform.position, Quaternion.identity);
-        picThing = Instantiate(UIManager.instance.imageLoading, transform.position, Quaternion.identity);
+        picThing = Instantiate(UIManager.instance.imageLoading, transform.position, Quaternion.identity, parent: transform);
+        picThing.GetComponent<LoaderPic>().Init(4);
         StartCoroutine(koroutne());
         
     }

@@ -16,6 +16,7 @@ public class LoaderPic : MonoBehaviour
 
     public void Init(float seconds)
     {
+        targetFillAmount = 1f;
         StartCoroutine(tween(seconds));
     }
 
@@ -23,11 +24,12 @@ public class LoaderPic : MonoBehaviour
     {
         float fillSpeed = 1f / seconds;
         
-        while (currentFillAmount != targetFillAmount)
+        while (currentFillAmount < targetFillAmount)
         {
             currentFillAmount = Mathf.MoveTowards(currentFillAmount, targetFillAmount, fillSpeed * Time.deltaTime);
             pic.fillAmount = currentFillAmount;
             yield return null;
         }
+        Destroy(gameObject);
     }
 }
