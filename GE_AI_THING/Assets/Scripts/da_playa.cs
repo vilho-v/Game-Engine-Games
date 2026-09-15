@@ -15,15 +15,15 @@ public class da_playa : MonoBehaviour
     }
 
 
-    void LateUpdate()
+    void Update()
     {
         float xMovement = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
         float zMovement = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
         float yMovement = Physics.gravity.y;
 
         Vector3 moveDirection = new Vector3(xMovement, yMovement, zMovement);
-        controller.Move(moveDirection * Time.deltaTime);
-        transform.Translate(xMovement, 0, zMovement);
+        controller.Move(moveSpeed * Time.deltaTime * transform.TransformDirection(moveDirection));
+        //transform.Translate(xMovement, 0, zMovement);
 
         float mouseInput = Input.GetAxis("Mouse X") * rotateSpeed * Time.deltaTime;
         Vector3 lookHere = new Vector3(0, mouseInput, 0);
@@ -32,11 +32,11 @@ public class da_playa : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
 
     }
-    private void OnTriggerExit(Collider other)
+    void OnTriggerExit(Collider other)
     {
 
     }

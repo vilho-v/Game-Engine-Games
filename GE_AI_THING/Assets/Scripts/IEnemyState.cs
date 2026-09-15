@@ -1,16 +1,16 @@
 using UnityEngine;
 
-public class IEnemyState : MonoBehaviour
+public interface IEnemyState
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
+    public void UpdateState();
+
+    public void StateTriggerEnter(Collider other);
+
+    public void StateTriggerStay(Collider other);
+
+    public void ToPatrolState();
+    public void ToAlertState();
+    public void ToChaseState();
 }
