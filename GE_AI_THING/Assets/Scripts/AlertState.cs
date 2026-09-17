@@ -52,7 +52,7 @@ public class AlertState : MonoBehaviour, IEnemyState
     {
         if (other.CompareTag("Player"))
         {
-            print("critter " + enemy.name + " hit player in chase state");
+           // print("critter " + enemy.name + " hit player in chase state");
         }
     }
 

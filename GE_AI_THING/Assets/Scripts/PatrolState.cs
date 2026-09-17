@@ -81,4 +81,9 @@ public class PatrolState : MonoBehaviour, IEnemyState
         print("switched from patrol to chase");
         enemy.currentState = enemy.chaseState;
     }
+
+    public void StateTriggerEnter(Collider other)
+    {
+        //throw new System.NotImplementedException();
+    }
 }

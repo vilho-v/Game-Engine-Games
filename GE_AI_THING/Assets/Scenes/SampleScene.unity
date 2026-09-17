@@ -1192,7 +1192,6 @@ GameObject:
   - component: {fileID: 1447592095}
   - component: {fileID: 1447592094}
   - component: {fileID: 1447592097}
-  - component: {fileID: 1447592098}
   - component: {fileID: 1447592099}
   m_Layer: 0
   m_Name: evil critter
@@ -1300,27 +1299,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &1447592098
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1447592092}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 10
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &1447592099
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1357,6 +1335,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StatePatternEnemy
   searchDuration: 5
   searchRotationSpeed: 50
+  chaseDuration: 10
+  chaseSpeedIncrease: 1
   sightRange: 10
   waypoints:
   - {fileID: 1726073230}
@@ -1494,9 +1474,10 @@ GameObject:
   - component: {fileID: 1472056975}
   - component: {fileID: 1472056977}
   - component: {fileID: 1472056976}
+  - component: {fileID: 1472056978}
   m_Layer: 0
   m_Name: evil eye
-  m_TagString: Untagged
+  m_TagString: Trigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1573,6 +1554,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1472056974}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!135 &1472056978
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1472056974}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 15
+  m_Center: {x: 0, y: 0, z: -1}
 --- !u!1 &1609852559
 GameObject:
   m_ObjectHideFlags: 0
