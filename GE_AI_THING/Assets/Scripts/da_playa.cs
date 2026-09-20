@@ -8,12 +8,7 @@ public class da_playa : MonoBehaviour
     public float rotateSpeed; // 200
     public CharacterController controller;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
+    public bool evil;
 
     void Update()
     {
@@ -28,6 +23,13 @@ public class da_playa : MonoBehaviour
         float mouseInput = Input.GetAxis("Mouse X") * rotateSpeed * Time.deltaTime;
         Vector3 lookHere = new Vector3(0, mouseInput, 0);
         transform.Rotate(lookHere);
+
+
+        // jos on evil niin pahikset juoksee karkuun
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            evil = !evil;
+        }
 
     }
 

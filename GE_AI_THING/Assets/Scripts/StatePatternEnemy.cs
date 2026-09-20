@@ -22,13 +22,22 @@ public class StatePatternEnemy : MonoBehaviour
 
     public IEnemyState currentState;
 
+    public da_playa player;
+
     [HideInInspector] public NavMeshAgent navMeshAgent;
     public PatrolState patrolState;
     public AlertState alertState;
     public ChaseState chaseState;
+    public EscapeState escapeState;
+    public TrackState trackState;
 
     [Header("set in runtime")]
     public Transform target;
+
+
+    // wall + player so ground doesnt fuck up the spherecasting
+    public LayerMask blockingMask;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -36,6 +45,9 @@ public class StatePatternEnemy : MonoBehaviour
         patrolState = new PatrolState(this);
         alertState = new AlertState(this);
         chaseState = new ChaseState(this);
+        escapeState = new EscapeState(this);
+        trackState = new TrackState(this);
+        
         navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
@@ -54,5 +66,10 @@ public class StatePatternEnemy : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         currentState.StateTriggerEnter(other);
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+        currentState.StateTriggerStay(other);
     }
 }

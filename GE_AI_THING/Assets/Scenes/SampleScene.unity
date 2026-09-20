@@ -457,6 +457,7 @@ MonoBehaviour:
   moveSpeed: 75
   rotateSpeed: 2000
   controller: {fileID: 373034026}
+  evil: 0
 --- !u!143 &373034026
 CharacterController:
   m_ObjectHideFlags: 0
@@ -620,7 +621,7 @@ GameObject:
   - component: {fileID: 433885121}
   - component: {fileID: 433885120}
   - component: {fileID: 433885119}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -711,7 +712,7 @@ GameObject:
   - component: {fileID: 598623479}
   - component: {fileID: 598623478}
   - component: {fileID: 598623477}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WALL (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1048,7 +1049,7 @@ GameObject:
   - component: {fileID: 1299035150}
   - component: {fileID: 1299035149}
   - component: {fileID: 1299035148}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WALL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1193,7 +1194,8 @@ GameObject:
   - component: {fileID: 1447592094}
   - component: {fileID: 1447592097}
   - component: {fileID: 1447592099}
-  m_Layer: 0
+  - component: {fileID: 1447592101}
+  m_Layer: 7
   m_Name: evil critter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1309,10 +1311,10 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 4
   m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 360
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -1333,11 +1335,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f3f3b8db77928c48aac8d217b0bdb79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StatePatternEnemy
-  searchDuration: 5
-  searchRotationSpeed: 50
+  searchDuration: 10
+  searchRotationSpeed: 60
   chaseDuration: 10
   chaseSpeedIncrease: 1
-  sightRange: 10
+  sightRange: 15
   waypoints:
   - {fileID: 1726073230}
   - {fileID: 13474793}
@@ -1346,11 +1348,38 @@ MonoBehaviour:
   - {fileID: 797522021}
   evil_eye: {fileID: 1472056975}
   indicator: {fileID: 433885119}
+  player: {fileID: 373034025}
   navMeshAgent: {fileID: 1447592099}
   patrolState: {fileID: 0}
   alertState: {fileID: 0}
   chaseState: {fileID: 0}
+  escapeState: {fileID: 0}
+  trackState: {fileID: 0}
   target: {fileID: 0}
+  blockingMask:
+    serializedVersion: 2
+    m_Bits: 320
+--- !u!135 &1447592101
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1447592092}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 10
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1471377296
 GameObject:
   m_ObjectHideFlags: 0
@@ -1363,7 +1392,7 @@ GameObject:
   - component: {fileID: 1471377299}
   - component: {fileID: 1471377298}
   - component: {fileID: 1471377297}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WALL (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1474,8 +1503,7 @@ GameObject:
   - component: {fileID: 1472056975}
   - component: {fileID: 1472056977}
   - component: {fileID: 1472056976}
-  - component: {fileID: 1472056978}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: evil eye
   m_TagString: Trigger
   m_Icon: {fileID: 0}
@@ -1554,27 +1582,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1472056974}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!135 &1472056978
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1472056974}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 15
-  m_Center: {x: 0, y: 0, z: -1}
 --- !u!1 &1609852559
 GameObject:
   m_ObjectHideFlags: 0
@@ -1587,7 +1594,7 @@ GameObject:
   - component: {fileID: 1609852562}
   - component: {fileID: 1609852561}
   - component: {fileID: 1609852560}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WALL (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -13,4 +13,6 @@ public interface IEnemyState
     public void ToPatrolState();
     public void ToAlertState();
     public void ToChaseState();
+    public void ToTrackState();
+    public void ToEscapeState();
 }

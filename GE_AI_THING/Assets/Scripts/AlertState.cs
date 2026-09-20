@@ -9,12 +9,11 @@ public class AlertState : MonoBehaviour, IEnemyState
     public AlertState(StatePatternEnemy statePatternEnemy)
     {
         enemy = statePatternEnemy;
+       
     }
 
     void Search()
     {
-        Look();
-        enemy.indicator.material.color = Color.yellow;
         enemy.navMeshAgent.isStopped = true;
         enemy.transform.Rotate(0, enemy.searchRotationSpeed * Time.deltaTime, 0);
 
@@ -33,15 +32,25 @@ public class AlertState : MonoBehaviour, IEnemyState
 
         if (Physics.Raycast(enemy.evil_eye.position, enemy.evil_eye.forward, out RaycastHit hit, enemy.sightRange) && hit.collider.CompareTag("Player"))
         {
-            enemy.target = hit.collider.transform;
-            ToChaseState();
+            if(enemy.player.evil)
+            {
+                ToEscapeState();
+            }
+            else
+            {
+                enemy.target = hit.collider.transform;
+                ToChaseState();
+            }
         }
 
     }
 
     public void UpdateState()
     {
+         enemy.indicator.material.color = Color.yellow;
+        Look();
         Search();
+        
     }
 
     public void StateTriggerEnter(Collider other)
@@ -63,13 +72,21 @@ public class AlertState : MonoBehaviour, IEnemyState
     }
     public void ToAlertState()
     {
-        print($"critter {enemy.name} tried going from {this.name} to {this.name} state");
+        //print($"critter {enemy.name} tried going from {this.name} to {this.name} state");
     }
     public void ToChaseState()
     {
-        print("switched from alert to chase state");
+       // print("switched from alert to chase state");
         enemy.currentState = enemy.chaseState;
     }
+    public void ToTrackState()
+    {
 
+    }
+
+    public void ToEscapeState()
+    {
+        
+    }
 
 }

@@ -11,18 +11,6 @@ public class PatrolState : MonoBehaviour, IEnemyState
         enemy = statePatternEnemy;
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
 
     public void UpdateState()
     {
@@ -58,32 +46,42 @@ public class PatrolState : MonoBehaviour, IEnemyState
         }
     }
 
-    public void StateTriggerStay(Collider other)
+    public void StateTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))
         {
-            enemy.target = other.transform;
+            //enemy.target = other.transform;
             ToAlertState();
         }
     }
 
     public void ToPatrolState()
     {
-        print($"critter {enemy.name} tried going from {this.name} to {this.name} state");
+        //print($"critter {enemy.name} tried going from {this.name} to {this.name} state");
     }
     public void ToAlertState()
     {
-        print("switched from patrol to alert");
+        //print("switched from patrol to alert");
         enemy.currentState = enemy.alertState;
     }
     public void ToChaseState()
     {
-        print("switched from patrol to chase");
+  //      print("switched from patrol to chase");
         enemy.currentState = enemy.chaseState;
     }
 
-    public void StateTriggerEnter(Collider other)
+    public void StateTriggerStay(Collider other)
     {
         //throw new System.NotImplementedException();
+    }
+
+    public void ToTrackState()
+    {
+
+    }
+
+    public void ToEscapeState()
+    {
+        
     }
 }

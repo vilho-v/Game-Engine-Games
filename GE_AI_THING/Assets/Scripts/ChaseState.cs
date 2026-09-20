@@ -3,11 +3,13 @@ using UnityEngine;
 public class ChaseState : MonoBehaviour, IEnemyState
 {
 
-    // TODO : tee neljäs tila joka on TRACKING STATE
-    // tracking on sellainen että jos pelaaja menee nurkan taakse niin critter ei näe sitä 
-    // tällöin critter menee viimeksi nähtyyn paikkaaan ja alerttaa siellä ja jos pelaaja ei ole siellä niin critter menee takaisin patrol tilaan
-    // myös escape state joka lähtee pelaajaa vaan karkuun jhk vastaiseen suuntaan
+    // TODO : tee neljï¿½s tila joka on TRACKING STATE
+    // tracking on sellainen ettï¿½ jos pelaaja menee nurkan taakse niin critter ei nï¿½e sitï¿½ 
+    // tï¿½llï¿½in critter menee viimeksi nï¿½htyyn paikkaaan ja alerttaa siellï¿½ ja jos pelaaja ei ole siellï¿½ niin critter menee takaisin patrol tilaan
+    // myï¿½s escape state joka lï¿½htee pelaajaa vaan karkuun jhk vastaiseen suuntaan
     private StatePatternEnemy enemy;
+
+
 
     public ChaseState(StatePatternEnemy statePatternEnemy)
     {
@@ -17,9 +19,9 @@ public class ChaseState : MonoBehaviour, IEnemyState
 
     public void UpdateState()
     {
-        enemy.indicator.material.color = Color.crimson;
-        enemy.navMeshAgent.destination = enemy.target.position;
         enemy.navMeshAgent.isStopped = false;
+        enemy.indicator.material.color = Color.crimson;
+        
 
         Look();
     }
@@ -34,10 +36,10 @@ public class ChaseState : MonoBehaviour, IEnemyState
 
     public void StateTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            print("critter " + enemy.name + " hit player in chase state");
-        }
+        // if (other.CompareTag("Player"))
+        // {
+        //     print("critter " + enemy.name + " hit player in chase state");
+        // }
     }
 
     void Look()
@@ -45,26 +47,54 @@ public class ChaseState : MonoBehaviour, IEnemyState
 
         Debug.DrawRay(enemy.evil_eye.position, enemy.evil_eye.forward * enemy.sightRange, color: Color.green);
 
-        if (Physics.Raycast(enemy.evil_eye.position, enemy.evil_eye.forward, out RaycastHit hit, enemy.sightRange) && hit.collider.CompareTag("Player"))
+        if (Physics.SphereCast(enemy.evil_eye.position, 3,  enemy.evil_eye.forward, out RaycastHit hit, enemy.sightRange, layerMask: enemy.blockingMask) && hit.collider.CompareTag("Player"))
         {
-            enemy.target = hit.collider.transform;
-            ToChaseState();
+            print("i see plr");
+            if(enemy.player.evil)
+            {
+                ToEscapeState();
+            }
+            else
+            {
+                enemy.navMeshAgent.SetDestination(enemy.target.position);
+            }
+        }
+        else
+        {
+            print("cant see plr");
+
+            ToTrackState();
+            
         }
 
     }
 
     public void ToPatrolState()
     {
-        print("Switched from chase to patrol state");
+
         enemy.currentState = enemy.patrolState;
     }
     public void ToAlertState()
     {
-        print("Switched from chase to alert state");
+
         enemy.currentState = enemy.alertState;
     }
     public void ToChaseState()
     {
-        print($"critter {enemy.name} tried going from {this.name} to {this.name} state");
+        //print($"critter {enemy.name} tried going from {this.name} to {this.name} state");
     }
+
+    public void ToTrackState()
+    {
+
+        enemy.currentState = enemy.trackState;
+    }
+
+    public void ToEscapeState()
+    {
+
+        enemy.currentState = enemy.escapeState;
+    }
+
+
 }
