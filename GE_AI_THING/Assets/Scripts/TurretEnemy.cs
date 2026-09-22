@@ -56,6 +56,8 @@ public class TurretEnemy : MonoBehaviour
 
             if (transform.eulerAngles.y == targetDir.eulerAngles.y) 
                 break;
+
+            yield return null;
         }
 
         // get direction of shots

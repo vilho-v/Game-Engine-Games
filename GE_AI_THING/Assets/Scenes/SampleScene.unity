@@ -3352,7 +3352,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2032462759}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.009428353, y: -0.7419064, z: 0.010434688, w: 0.6703559}
   m_LocalPosition: {x: 5.65, y: 0, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3361,7 +3361,7 @@ Transform:
   - {fileID: 536082346}
   - {fileID: 812053011}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.163, y: -95.798, z: 1.603}
 --- !u!114 &2032462767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3374,6 +3374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a3e180949c888a489e9e8e9f4799cb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TurretEnemy
+  targetObject: {fileID: 0}
   ammoSpawn: {fileID: 1426463717}
   gunRotator: {fileID: 812053012}
   force: 30
