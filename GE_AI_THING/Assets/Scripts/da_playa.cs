@@ -9,6 +9,11 @@ public class da_playa : MonoBehaviour
     public CharacterController controller;
 
     public bool evil;
+    Color baseColor;
+    private void Start()
+    {
+        baseColor = GetComponent<MeshRenderer>().material.color;
+    }
 
     void Update()
     {
@@ -28,14 +33,24 @@ public class da_playa : MonoBehaviour
         // jos on evil niin pahikset juoksee karkuun
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            evil = !evil;
+           EvilThing();
         }
 
     }
 
-
-    void OnTriggerEnter(Collider other)
+    void EvilThing()
     {
+        if (!evil)
+        {
+            evil = true;
+            GetComponent<MeshRenderer>().material.color = Color.red;
+        }
+        else
+
+        {
+            evil = false;
+            GetComponent<MeshRenderer>().material.color = baseColor;
+        }
 
     }
     void OnTriggerExit(Collider other)
