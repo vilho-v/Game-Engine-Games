@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daefd6e1fb33ae34aae9caa788cbb7e9, type: 3}
+  m_Name: Tank
+  m_EditorClassIdentifier: 
+  unitName: Tank
+  health: 400
+  menuButton: {fileID: 1122513151883002686, guid: a5e321c068423994a89745098de7d046, type: 3}
+  model: {fileID: 2682367506419364457, guid: 1ba6271e97a269348a65bf9ac08f871d, type: 3}
+  cost: 300
+  buildingDuration: 6
+  buildingInProgress: 0
+  paused: 0
+  done: 0
+  creationPlace: {x: -0.6678066, y: 5.025093e-16, z: -22.631006}

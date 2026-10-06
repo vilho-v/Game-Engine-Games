@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f33a6d7d4141c8b4ba17544e23c3685a, type: 3}
+  m_Name: Nexus
+  m_EditorClassIdentifier: Assembly-CSharp::Building
+  buildingName: Nexus
+  health: 800
+  menuIcon: {fileID: 3496097950337859009, guid: 1f4f040fdc74085409ab5ed779bcdca4, type: 3}
+  production: []
+  model: {fileID: 83792548922325495, guid: 211bfd7bd18b86e4b970cb891f76b743, type: 3}
+  cost: 600
+  buildingDuration: 10
+  buildingInProgress: 0
+  paused: 0
+  done: 0
+  alreadyBuilt: 0
