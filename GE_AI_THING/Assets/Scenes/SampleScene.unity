@@ -3378,6 +3378,7 @@ MonoBehaviour:
   ammoSpawn: {fileID: 1426463717}
   gunRotator: {fileID: 812053012}
   force: 30
+  rotationSpeed: 60
   bullet: {fileID: 560857087110260875, guid: 787e4f0aae334de4f901b90ffe9e1402, type: 3}
   gravity: {x: 0, y: 0, z: 0}
   angleMultiplier: 0

@@ -5,18 +5,23 @@ using System.Collections;
 // enemy which shoots at plr when targeted
 public class TurretEnemy : MonoBehaviour
 {
-
+    // box above enemy
     MeshRenderer indicator;
 
     public GameObject targetObject;
+
+    // barrel
     public Transform ammoSpawn;
+
+    // hinge along which gun is rotated
     public RotateGun gunRotator;
-    public float force;
+    public float force=30, rotationSpeed = 60;
 
     public GameObject bullet;
 
     public Vector3 gravity;
 
+    // necessary fix to rotation when enemy is turned certain ways (idk)
     public int angleMultiplier;
 
     private void Awake()
@@ -34,7 +39,7 @@ public class TurretEnemy : MonoBehaviour
     {
         if(gunRotator.rotating)
         {
-            print("pyssy on ampumassa edelleen; ei ammuta vielä");
+            print("pyssy on ampumassa edelleen; ei ammuta vielï¿½");
             return;
         }
         StartCoroutine(ShootBalls(target));
@@ -46,17 +51,26 @@ public class TurretEnemy : MonoBehaviour
 
 
         Vector3 targetPos = target.position - transform.position;
-        Quaternion targetDir = Quaternion.LookRotation(targetPos, Vector3.up);
-        var startRotation = transform.rotation;
+        Quaternion targetDir;
 
-
+        // rotates until facing plr
         while(true)
         {
-            Quaternion.Lerp(startRotation, targetDir, 1);
+            // upd every frame
+            targetDir = Quaternion.LookRotation(targetPos, Vector3.up);
 
-            if (transform.eulerAngles.y == targetDir.eulerAngles.y) 
+            // rotate until sort of facing player
+            if(Quaternion.Angle(transform.rotation, targetDir) > 0.5f)
+            {
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, targetDir, rotationSpeed * Time.deltaTime);
+            }
+            else
+            {
                 break;
+            }
 
+
+            // prevent CRASHING
             yield return null;
         }
 
@@ -77,7 +91,7 @@ public class TurretEnemy : MonoBehaviour
             {
                 float ang = Mathf.Atan(dir.y / dir.z) * Mathf.Rad2Deg * angleMultiplier;
                 // point gun via RotateGun
-                print("piiipun pitäisi kääntyä kulmaan " + ang);
+                print("piiipun pitï¿½isi kï¿½ï¿½ntyï¿½ kulmaan " + ang);
                 gunRotator.xAngle = ang;
 
                 yield return new WaitUntil(() => gunRotator.rotating == false);
