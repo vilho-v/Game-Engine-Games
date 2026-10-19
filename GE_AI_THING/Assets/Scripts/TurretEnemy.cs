@@ -7,17 +7,15 @@ public class TurretEnemy : MonoBehaviour
 {
 
     MeshRenderer indicator;
-
     public GameObject targetObject;
     public Transform ammoSpawn;
     public RotateGun gunRotator;
     public float force;
-
     public GameObject bullet;
-
     public Vector3 gravity;
-
     public int angleMultiplier;
+
+    bool shooting;
 
     private void Awake()
     {
@@ -32,11 +30,16 @@ public class TurretEnemy : MonoBehaviour
 
     public void Shoot(Transform target)
     {
-        if(gunRotator.rotating)
+        if(shooting)
         {
             print("pyssy on ampumassa edelleen; ei ammuta vielä");
             return;
         }
+        else
+        {
+            print("pyssy ampuu kohteeseen " + target.name);
+        }
+        shooting = true;
         StartCoroutine(ShootBalls(target));
     }
     public IEnumerator ShootBalls(Transform target)
@@ -44,14 +47,18 @@ public class TurretEnemy : MonoBehaviour
         indicator.material.color = Color.red;
         print($"arg i be shootin at {target.name} t. {gameObject.name}" );
 
+        targetObject = target.gameObject;
 
         Vector3 targetPos = target.position - transform.position;
+
+        print(targetPos);
         Quaternion targetDir = Quaternion.LookRotation(targetPos, Vector3.up);
         var startRotation = transform.rotation;
-
+            
 
         while(true)
         {
+            
             Quaternion.Lerp(startRotation, targetDir, 1);
 
             if (transform.eulerAngles.y == targetDir.eulerAngles.y) 
@@ -89,7 +96,7 @@ public class TurretEnemy : MonoBehaviour
                 yield return new WaitForSeconds(1);
             }
 
-
+        shooting = false;
 
 
         // shoot
