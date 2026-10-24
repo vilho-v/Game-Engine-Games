@@ -10,12 +10,18 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     public GUIStyle style;
     private const string roomName = "huone";
+
+    public string playerNameInput;
+
+
     
     void Start()
     {
         style.fontSize = 28;
         style.normal.textColor = Color.blue;
         roomsList = new();
+
+        playerNameInput = "enter name here";
 
         PhotonNetwork.ConnectUsingSettings();
     }
@@ -41,6 +47,10 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         // also list all rooms
         if(PhotonNetwork.InRoom == false && PhotonNetwork.InLobby == true)
         {
+            
+            playerNameInput = GUI.TextField(new Rect(10,70,200,20), playerNameInput, 25);
+
+
 
             // if create room btn is pressed
             if(GUI.Button(new Rect(100,100,250,100), "Create Room"))
@@ -55,7 +65,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
                 int i = 0;
                 foreach(RoomInfo room in roomsList)
                 {
-                    if(GUI.Button(new Rect(100,250 * i,250,100), "Join " + room.Name))
+                    if(GUI.Button(new Rect(100,250 + 100 * i,250,100), "Join " + room.Name))
                     {
                         PhotonNetwork.JoinRoom(room.Name);
                     }
@@ -82,7 +92,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
         // create a player character when room has been joined
         // instantiated via photonnetwork and has to contain photonview and in resources folder             
-
-        PhotonNetwork.Instantiate("Player", new(0,0.5f,0), Quaternion.identity, 0);
+        string[] plrdata = new string[1];
+        plrdata[0] = playerNameInput;
+        PhotonNetwork.Instantiate("Player", new(Random.Range(-10,10),2f,0), Quaternion.identity, default, plrdata);
     }
 }
