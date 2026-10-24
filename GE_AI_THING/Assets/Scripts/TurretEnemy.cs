@@ -16,7 +16,6 @@ public class TurretEnemy : MonoBehaviour
     public RotateGun gunRotator;
     public float force=30, rotationSpeed = 60;
 
-    public float force;
     public GameObject bullet;
     public Vector3 gravity;
 
@@ -40,7 +39,7 @@ public class TurretEnemy : MonoBehaviour
     {
         if(shooting)
         {
-            print("pyssy on ampumassa edelleen; ei ammuta viel�");
+            print("pyssy on ampumassa edelleen; ei ammuta viel");
             return;
         }
         else
@@ -58,7 +57,7 @@ public class TurretEnemy : MonoBehaviour
         targetObject = target.gameObject;
 
         Vector3 targetPos = target.position - transform.position;
-        Quaternion targetDir;
+        //Quaternion targetDir;
 
         print(targetPos);
         Quaternion targetDir = Quaternion.LookRotation(targetPos, Vector3.up);
