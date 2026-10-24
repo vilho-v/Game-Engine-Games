@@ -47,7 +47,7 @@ public class ChaseState : MonoBehaviour, IEnemyState
 
         Debug.DrawRay(enemy.evil_eye.position, enemy.evil_eye.forward * enemy.sightRange, color: Color.green);
 
-        if (Physics.SphereCast(enemy.evil_eye.position, 3,  enemy.evil_eye.forward, out RaycastHit hit, enemy.sightRange, layerMask: enemy.blockingMask) && hit.collider.CompareTag("Player"))
+        if (Physics.SphereCast(enemy.evil_eye.position, 2,  enemy.evil_eye.forward, out RaycastHit hit, enemy.sightRange, layerMask: enemy.blockingMask) && hit.collider.CompareTag("Player"))
         {
             print("i see plr");
             if(enemy.player.evil)

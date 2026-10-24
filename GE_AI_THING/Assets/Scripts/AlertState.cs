@@ -6,6 +6,8 @@ public class AlertState : MonoBehaviour, IEnemyState
 
     float searchTimer;
 
+    bool inited = false;
+
     public AlertState(StatePatternEnemy statePatternEnemy)
     {
         enemy = statePatternEnemy;
@@ -47,7 +49,13 @@ public class AlertState : MonoBehaviour, IEnemyState
 
     public void UpdateState()
     {
-         enemy.indicator.material.color = Color.yellow;
+        enemy.indicator.material.color = Color.yellow;
+        if(!inited)
+        {
+            searchTimer = 0;
+            inited = true;
+        }
+
         Look();
         Search();
         
@@ -69,6 +77,8 @@ public class AlertState : MonoBehaviour, IEnemyState
     {
         searchTimer = 0;
         enemy.currentState = enemy.patrolState;
+
+        inited = false;
     }
     public void ToAlertState()
     {
@@ -78,15 +88,16 @@ public class AlertState : MonoBehaviour, IEnemyState
     {
        // print("switched from alert to chase state");
         enemy.currentState = enemy.chaseState;
+        inited = false;
     }
     public void ToTrackState()
     {
-
+        inited = false;
     }
 
     public void ToEscapeState()
     {
-        
+        inited = false;
     }
 
 }

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f33a6d7d4141c8b4ba17544e23c3685a, type: 3}
+  m_Name: Factory
+  m_EditorClassIdentifier: Assembly-CSharp::Building
+  buildingName: Factory
+  health: 400
+  menuIcon: {fileID: 5984797426169149950, guid: 48fe33c2c3b8b4d4aa39903cfe1e13ba, type: 3}
+  production: []
+  model: {fileID: 4971063724889612435, guid: fe6e7b29aee098f4d8d7cf0b03e79bc0, type: 3}
+  cost: 500
+  buildingDuration: 7
+  buildingInProgress: 0
+  paused: 0
+  done: 0
+  alreadyBuilt: 0

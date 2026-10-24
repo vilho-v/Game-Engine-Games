@@ -7,7 +7,6 @@ public class TurretEnemy : MonoBehaviour
 {
     // box above enemy
     MeshRenderer indicator;
-
     public GameObject targetObject;
 
     // barrel
@@ -17,12 +16,14 @@ public class TurretEnemy : MonoBehaviour
     public RotateGun gunRotator;
     public float force=30, rotationSpeed = 60;
 
+    public float force;
     public GameObject bullet;
-
     public Vector3 gravity;
 
     // necessary fix to rotation when enemy is turned certain ways (idk)
     public int angleMultiplier;
+
+    bool shooting;
 
     private void Awake()
     {
@@ -37,11 +38,16 @@ public class TurretEnemy : MonoBehaviour
 
     public void Shoot(Transform target)
     {
-        if(gunRotator.rotating)
+        if(shooting)
         {
             print("pyssy on ampumassa edelleen; ei ammuta viel�");
             return;
         }
+        else
+        {
+            print("pyssy ampuu kohteeseen " + target.name);
+        }
+        shooting = true;
         StartCoroutine(ShootBalls(target));
     }
     public IEnumerator ShootBalls(Transform target)
@@ -49,15 +55,23 @@ public class TurretEnemy : MonoBehaviour
         indicator.material.color = Color.red;
         print($"arg i be shootin at {target.name} t. {gameObject.name}" );
 
+        targetObject = target.gameObject;
 
         Vector3 targetPos = target.position - transform.position;
         Quaternion targetDir;
+
+        print(targetPos);
+        Quaternion targetDir = Quaternion.LookRotation(targetPos, Vector3.up);
+        var startRotation = transform.rotation;
+            
 
         // rotates until facing plr
         while(true)
         {
             // upd every frame
             targetDir = Quaternion.LookRotation(targetPos, Vector3.up);
+            
+            Quaternion.Lerp(startRotation, targetDir, 1);
 
             // rotate until sort of facing player
             if(Quaternion.Angle(transform.rotation, targetDir) > 0.5f)
@@ -103,7 +117,7 @@ public class TurretEnemy : MonoBehaviour
                 yield return new WaitForSeconds(1);
             }
 
-
+        shooting = false;
 
 
         // shoot
