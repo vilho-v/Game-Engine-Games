@@ -8,6 +8,8 @@ public class PlayerControl : MonoBehaviour
     public float rotateSpeed; // 200
     public CharacterController controller;
 
+    public Interactable nearbyStation;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +17,7 @@ public class PlayerControl : MonoBehaviour
     }
 
   
-    void FixedUpdate()
+    void LateUpdate()
     {
         float xMovement = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
         float zMovement = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
@@ -28,18 +30,22 @@ public class PlayerControl : MonoBehaviour
         Vector3 lookHere = new Vector3(0, mouseInput, 0);
         transform.Rotate(lookHere);
 
+        // whenn near a thing and a btn is pressed it will be interacted with
+        if(nearbyStation != null && Input.GetKeyDown(KeyCode.Space))
+        {
+            nearbyStation.Interact();
+        }
 
 
     }
 
-    public void Update()
-    {
-
-    }
 
     private void OnTriggerEnter(Collider other)
     {
-
+        if(other.TryGetComponent(out Interactable it))
+        {
+            nearbyStation = it;
+        }
     }
     private void OnTriggerExit(Collider other)
     {

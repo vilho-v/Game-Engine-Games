@@ -22,8 +22,5 @@ public class Blades : MonoBehaviour
     public void ChangeSpeed()
     {
 
- 
-
-
     }
 }

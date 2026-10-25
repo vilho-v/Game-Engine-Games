@@ -18,12 +18,20 @@ public class EscapeState : MonoBehaviour, IEnemyState
         // jos juoksee niin ei etsi uutta pakoreittiä
         if(running)
         {
-            // päästy loppuun
+            // nodeen saavuttua mene alert stateen
             if (enemy.navMeshAgent.remainingDistance <= enemy.navMeshAgent.stoppingDistance && !enemy.navMeshAgent.pathPending)
             {
+                ToAlertState();
+
+                // kun poistutaan laita running pois
                 running = false;
+
+                // varmista ettei tämä laita runningia taas päälle ennen kuin poistuu kokonaan
+                return;
             }
         }
+
+        // jos ei vielä juoksussa, lähde karkuun
         else
         {
             GetEscapeNode();
@@ -33,12 +41,6 @@ public class EscapeState : MonoBehaviour, IEnemyState
 
     void GetEscapeNode()
     {
-        if(running)
-        {
-            ToAlertState();
-            running = false;
-        }
-
 
         running = true;
         // yksikkövektori poispäin pelaajasta

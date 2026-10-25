@@ -20,6 +20,11 @@ public class Player : MonoBehaviourPunCallbacks
     void Start()
     {
 
+
+        object[] arr = photonView.InstantiationData;
+
+        playerName = arr[0].ToString();
+
         // this checks if the critter in question is the photonview client's own
         // if tru then enable this critters cam
         if(photonView.IsMine)
